@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isLiked(int num) {
+    return num % 3 != 0 && num % 10 != 3;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        int k;
+        cin >> k;
+        
+        int count = 0;
+        int num = 1;
+        
+        while (true) {
+            if (isLiked(num)) {
+                count++;
+                if (count == k) {
+                    cout << num << endl;
+                    break;
+                }
+            }
+            num++;
+        }
+    }
+    
+    return 0;
+}
