@@ -83,7 +83,7 @@ bool prime(ll a)
     return 1;
 }
 void yes() { cout << "YES\n"; }
-void no() { cout << "NO\n"; }
+void no() { cout << "NO\n"; }   
 
 typedef long int int32;
 typedef unsigned long int uint32;
