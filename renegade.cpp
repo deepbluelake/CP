@@ -83,12 +83,43 @@ bool prime(ll a)
     return 1;
 }
 void yes() { cout << "YES\n"; }
-void no() { cout << "NO\n"; }   
+void no() { cout << "NO\n"; }
 
 typedef long int int32;
 typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int uint64;
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define vi vector<int>
+#define f(i, a, b) for (int i = a; i < b; i++)
+const int inf = 1e9 + 7;
+
+bool check(vi &a, vi &b, int n)
+{
+    int diff = inf;
+
+    f(i, 0, n)
+    {
+        if (b[i] != 0)
+            diff = min(diff, a[i] - b[i]);
+    }
+
+    if (diff < 0)
+        return false;
+    if (diff == inf)
+        return true;
+
+    f(i, 0, n)
+    {
+        if ((a[i] - b[i] > diff) || (b[i] != 0 && a[i] - b[i] < diff))
+            return false;
+    }
+
+    return true;
+}
 
 int main()
 {
@@ -98,10 +129,9 @@ int main()
     {
         int n;
         cin >> n;
-        vi nums(n);
-        f(i, 0, n) cin >> nums[i];
-        sort(nums.begin(), nums.end(), greater<int>());
-        f(i, 0, n) cout << nums[i] << " ";
+        vi a(n), b(n);
+        f(i, 0, n) cin >> a[i];
+        f(i, 0, n) cin >> b[i];
+        cout << (check(a, b, n) ? "YES\n" : "NO\n");
     }
-    return 0;
 }
